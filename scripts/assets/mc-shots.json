@@ -1,0 +1,13 @@
+{
+  "world": "texture packs test 1.8.9",
+  "username": "Iraqies",
+  "comment": "Positions from the 2026-09-04 Discord /tp list, with swords/foods/tools moved 1 block forward toward the exhibit walls. Indoor Discord rotations were written pitch-then-yaw; 1.8.9 takes yaw then pitch, and the reference PNGs are level, so those shots are stored as <yaw> 0. Blocks faces the utility cluster at yaw 0. Sky stays level (pitch 0) so packs that put a character on the horizon stay centered. Vanilla Sky/sun are off so they do not draw a second dome through that view. The nether exhibit is built in the overworld, so that shot stays in dimension 0.",
+  "shots": [
+    { "name": "swords", "label": "Swords", "dimension": 0, "tp": "-205.5 42 -592.5 180 0", "reference": "2026-09-04_15.41.52.png" },
+    { "name": "foods", "label": "Foods", "dimension": 0, "tp": "-212.5 42 -592.5 180 0", "reference": "2026-09-04_15.43.36.png" },
+    { "name": "tools", "label": "Tools", "dimension": 0, "tp": "-215.5 42 -591.0 90 0", "reference": "2026-09-04_15.45.15.png" },
+    { "name": "blocks", "label": "Blocks", "dimension": 0, "tp": "-217.5 42 -591 0 0", "reference": "2026-09-04_15.46.22.png" },
+    { "name": "sky", "label": "Sky", "dimension": 0, "tp": "-211.0 200 -591.0 90 0", "reference": "2026-09-04_15.51.15.png" },
+    { "name": "nether", "label": "Nether", "dimension": 0, "tp": "-257.3 38 -580.3 132 0", "reference": "2026-09-04_15.48.51.png" }
+  ]
+}

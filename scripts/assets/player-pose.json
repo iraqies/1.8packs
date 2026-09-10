@@ -1,0 +1,25 @@
+{
+  "yaw": -0.66,
+  "pitch": 0.05,
+  "headYaw": 0.19,
+  "headPitch": -0.36,
+  "zoom": 0.74,
+  "fov": 20,
+  "rightArmX": -0.73,
+  "rightArmZ": 0.05,
+  "leftArmX": 0.2,
+  "leftArmZ": -0.04,
+  "rightLegX": 0.12,
+  "leftLegX": -0.1,
+  "height": 840,
+  "outline": 2,
+  "anchor": [5.6, 0, 0.85],
+  "anchorOffset": [12, 8],
+  "sky": {
+    "box": [1200, 1050, 2796, 2048],
+    "brightness": 0.92,
+    "color": 1.05
+  },
+  "cam": [0, 0, 130.95425678877325],
+  "target": [0, 0, 0]
+}

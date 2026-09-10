@@ -1,0 +1,14 @@
+node_modules
+dist
+.DS_Store
+*.local
+.vite
+.env
+__pycache__/
+scripts/.cache/
+
+# Pack zips are GitHub release assets, not repo files. Git blocks files over
+# 100 MiB, and Cloudflare Pages caps a single asset at 25 MiB — so they are
+# never committed or deployed with the site. Keep the local copy and publish
+# it with `npm run packs:upload`.
+public/downloads/
