@@ -11,7 +11,7 @@ export function PrivacyPage() {
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-12">
-      <p className="text-sm text-faint">Last updated September 10, 2026</p>
+      <p className="text-sm text-faint">Last updated September 11, 2026</p>
       <h1 className="mt-2 text-4xl font-semibold tracking-tight">Privacy Policy</h1>
       <p className="mt-4 leading-7 text-mute">
         This draft covers the current preview of {site.name}. It will be replaced if accounts or first-party download
@@ -46,9 +46,9 @@ export function PrivacyPage() {
       <section className="mt-8 space-y-3">
         <h2 className="text-lg font-medium">Cookies</h2>
         <p className="leading-7 text-mute">
-          This preview does not set advertising cookies. Pack pages, the explore page, and the download dialog show
-          placeholder ad slots that load nothing. When a live partner is hooked up, this policy will name them and the
-          choice you have.
+          Pack pages, Explore, and the download dialog show ads from Adsterra. Those tags may set third-party cookies
+          and open a popunder on click. Adsterra&apos;s own policy covers what they collect. You can block this with
+          an ad blocker. Legal pages do not load the popunder.
         </p>
       </section>
 

@@ -37,15 +37,40 @@ export interface AdSlotConfig {
 
 export type AdSlotName = "packPage" | "exploreEnd" | "exploreEmpty" | "download";
 
+const BANNER_300 = `<script>
+  atOptions = {
+    'key' : '038f81c69d6b45e043831df5e0f999f6',
+    'format' : 'iframe',
+    'height' : 250,
+    'width' : 300,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highrevenueformat.com/038f81c69d6b45e043831df5e0f999f6/invoke.js"></script>`;
+
+const BANNER_728 = `<script>
+  atOptions = {
+    'key' : '763e178d051412ea49242b9406afb438',
+    'format' : 'iframe',
+    'height' : 90,
+    'width' : 728,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highrevenueformat.com/763e178d051412ea49242b9406afb438/invoke.js"></script>`;
+
 export const ads: {
   enabled: boolean;
+  /** Site-wide Adsterra popunder. Loaded on the live host only, not localhost. */
+  popunderSrc: string;
   slots: Record<AdSlotName, AdSlotConfig>;
 } = {
-  enabled: false,
+  enabled: true,
+  popunderSrc: "https://pl31284844.profitableratecpmnetwork.com/6b/11/8f/6b118f869f0b5f67f56e90fc1b850bf3.js",
   slots: {
-    packPage: { width: 728, height: 90, tag: "" },
-    exploreEnd: { width: 728, height: 90, tag: "" },
-    exploreEmpty: { width: 300, height: 250, tag: "" },
-    download: { width: 300, height: 250, tag: "" },
+    packPage: { width: 728, height: 90, tag: BANNER_728 },
+    exploreEnd: { width: 728, height: 90, tag: BANNER_728 },
+    exploreEmpty: { width: 300, height: 250, tag: BANNER_300 },
+    download: { width: 300, height: 250, tag: BANNER_300 },
   },
 };
