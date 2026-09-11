@@ -1,14 +1,17 @@
 import { ads, type AdSlotName } from "@/config";
 import { cn } from "@/lib/utils";
 
+const AD_PAGE: Record<AdSlotName, string> = {
+  packPage: "/ads/728.html",
+  exploreEnd: "/ads/728.html",
+  exploreEmpty: "/ads/300.html",
+  download: "/ads/300.html",
+};
+
 /**
- * A labelled ad container that always occupies its configured height, whether
- * or not a tag is loaded. Reserving the space is what keeps an ad from feeling
- * intrusive: without it the unit shoves the page down as it loads.
- *
- * The tag runs in an iframe rather than in the page. That is required for
- * document.write-style banner tags, and it also keeps third-party ad script
- * out of the app's own origin.
+ * Adsterra banners live in a real same-origin HTML file, not a srcDoc
+ * sandbox. Their invoke.js returns an empty script when the request has no
+ * Referer, which is what a unique-origin sandbox sends — a white box.
  */
 export function AdSlot({
   name,
@@ -20,29 +23,26 @@ export function AdSlot({
   className?: string;
 }) {
   const slot = ads.slots[name];
-  const live = ads.enabled && slot.tag.trim().length > 0;
+  const live = ads.enabled && Boolean(AD_PAGE[name]);
 
   return (
     <aside aria-label={label} className={cn("mx-auto w-full", className)} style={{ maxWidth: slot.width }}>
       <p className="mb-1.5 text-center text-[10px] font-medium uppercase tracking-[0.18em] text-faint">{label}</p>
       <div
         className={cn(
-          "relative mx-auto flex w-full items-center justify-center overflow-hidden rounded-[10px] bg-page-soft",
-          live ? null : "border border-dashed border-stroke-strong",
+          "relative mx-auto overflow-hidden rounded-[10px]",
+          live ? "bg-page" : "flex items-center justify-center border border-dashed border-stroke-strong bg-page-soft",
         )}
-        style={{ height: slot.height }}
+        style={{ height: slot.height, width: "100%", maxWidth: slot.width }}
       >
         {live ? (
           <iframe
             title={label}
+            src={AD_PAGE[name]}
             width={slot.width}
             height={slot.height}
             scrolling="no"
-            // No allow-same-origin: the tag gets an opaque origin and cannot
-            // reach into the site.
-            sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"
-            srcDoc={`<!doctype html><html><body style="margin:0;overflow:hidden">${slot.tag}</body></html>`}
-            className="block border-0"
+            className="block border-0 bg-page"
           />
         ) : (
           <div className="px-4 text-center">
