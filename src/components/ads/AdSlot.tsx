@@ -15,7 +15,7 @@ const AD_PAGE: Record<AdSlotName, string> = {
  */
 export function AdSlot({
   name,
-  label = "Advertisement",
+  label = "Ad",
   className,
 }: {
   name: AdSlotName;
@@ -27,11 +27,11 @@ export function AdSlot({
 
   return (
     <aside aria-label={label} className={cn("mx-auto w-full", className)} style={{ maxWidth: slot.width }}>
-      <p className="mb-1.5 text-center text-[10px] font-medium uppercase tracking-[0.18em] text-faint">{label}</p>
+      <p className="mb-1.5 text-center text-xs text-faint">{label}</p>
       <div
         className={cn(
-          "relative mx-auto overflow-hidden rounded-[10px]",
-          live ? "bg-page" : "flex items-center justify-center border border-dashed border-stroke-strong bg-page-soft",
+          "relative mx-auto overflow-hidden rounded-md",
+          live ? "bg-page" : "flex items-center justify-center border border-dashed border-stroke bg-page-soft",
         )}
         style={{ height: slot.height, width: "100%", maxWidth: slot.width }}
       >
@@ -46,9 +46,9 @@ export function AdSlot({
           />
         ) : (
           <div className="px-4 text-center">
-            <p className="text-[13px] font-semibold text-mute">Ad slot</p>
-            <p className="mt-0.5 text-[11px] text-faint">
-              {slot.width}×{slot.height} · hooks up once the site is online
+            <p className="text-sm text-mute">Ad</p>
+            <p className="mt-0.5 text-xs text-faint">
+              {slot.width}×{slot.height}
             </p>
           </div>
         )}

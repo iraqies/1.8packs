@@ -4,7 +4,7 @@ import { packs } from "@/data/packs";
 import { rankPacks } from "@/lib/search";
 import { cn, labelFeature } from "@/lib/utils";
 import type { Pack } from "@/types";
-import { Compass, CornerDownLeft, FileText, Home, Search, Shield } from "lucide-react";
+import { Search } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from "react";
 import { createPortal } from "react-dom";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -18,13 +18,13 @@ export function openCommandPalette() {
 
 type Item =
   | { kind: "pack"; id: string; to: string; pack: Pack }
-  | { kind: "link"; id: string; to: string; label: string; hint: string; icon: typeof Home };
+  | { kind: "link"; id: string; to: string; label: string; hint: string };
 
-const LINKS: Array<{ to: string; label: string; hint: string; icon: typeof Home }> = [
-  { to: "/", label: "Home", hint: "Featured pack and catalog", icon: Home },
-  { to: "/explore", label: "Explore packs", hint: "Search and filter everything", icon: Compass },
-  { to: "/terms", label: "Terms", hint: "Usage and credit policy", icon: FileText },
-  { to: "/privacy", label: "Privacy", hint: "What the site stores", icon: Shield },
+const LINKS: Array<{ to: string; label: string; hint: string }> = [
+  { to: "/", label: "Home", hint: "Start page" },
+  { to: "/explore", label: "Explore", hint: "Search and filter" },
+  { to: "/terms", label: "Terms", hint: "How the site works" },
+  { to: "/privacy", label: "Privacy", hint: "What gets collected" },
 ];
 
 function matchLinks(query: string) {
@@ -56,7 +56,6 @@ export function CommandPalette() {
       to: link.to,
       label: link.label,
       hint: link.hint,
-      icon: link.icon,
     }));
     return [...packItems, ...linkItems];
   }, [query, counts]);
@@ -96,7 +95,6 @@ export function CommandPalette() {
     setOpen(false);
   }, [location.pathname]);
 
-  // Escape must work even if focus has moved outside the panel.
   useEffect(() => {
     if (!open) return;
     function onEscape(event: KeyboardEvent) {
@@ -161,11 +159,11 @@ export function CommandPalette() {
         type="button"
         aria-label="Close search"
         onClick={() => setOpen(false)}
-        className="absolute inset-0 animate-fade cursor-default bg-page/80 backdrop-blur-sm"
+        className="absolute inset-0 cursor-default bg-page/90"
       />
       <div
         onKeyDown={onFieldKey}
-        className="animate-pop relative w-full max-w-xl overflow-hidden rounded-[14px] border border-stroke-strong bg-raised shadow-[0_30px_80px_rgb(0_0_0_/_0.6)]"
+        className="relative w-full max-w-xl overflow-hidden rounded-lg border border-stroke bg-raised"
       >
         <div className="flex items-center gap-3 border-b border-stroke px-4">
           <Search className="h-4 w-4 shrink-0 text-faint" />
@@ -178,7 +176,7 @@ export function CommandPalette() {
             autoComplete="off"
             className="h-14 w-full bg-transparent text-[15px] text-ink placeholder:text-faint outline-none"
           />
-          <kbd className="hidden shrink-0 rounded-[5px] border border-stroke bg-page-soft px-1.5 py-0.5 text-[11px] text-faint sm:block">
+          <kbd className="hidden shrink-0 rounded border border-stroke bg-page-soft px-1.5 py-0.5 text-[11px] text-faint sm:block">
             Esc
           </kbd>
         </div>
@@ -195,7 +193,7 @@ export function CommandPalette() {
                     setOpen(false);
                   }}
                   className={cn(
-                    "flex w-full items-center gap-3 rounded-[9px] px-2.5 py-2 text-left transition-colors",
+                    "flex w-full items-center gap-3 rounded-md px-2.5 py-2 text-left",
                     cursor === index ? "bg-panel" : "hover:bg-panel/60",
                   )}
                 >
@@ -206,28 +204,22 @@ export function CommandPalette() {
                         alt=""
                         loading="lazy"
                         decoding="async"
-                        className="h-10 w-16 shrink-0 rounded-[6px] border border-stroke object-cover"
+                        className="h-10 w-16 shrink-0 rounded border border-stroke object-cover"
                       />
                       <span className="min-w-0 flex-1">
                         <span className="block truncate text-sm font-medium text-ink">{item.pack.name}</span>
-                        <span className="block truncate text-[12px] text-mute">
+                        <span className="block truncate text-xs text-mute">
                           by {item.pack.creator} · {item.pack.features.slice(0, 2).map(labelFeature).join(", ")}
                         </span>
                       </span>
                       <Badge>{item.pack.resolution}</Badge>
                     </>
                   ) : (
-                    <>
-                      <span className="flex h-10 w-16 shrink-0 items-center justify-center rounded-[6px] border border-stroke bg-page-soft text-accent-2">
-                        <item.icon className="h-4 w-4" />
-                      </span>
-                      <span className="min-w-0 flex-1">
-                        <span className="block truncate text-sm font-medium text-ink">{item.label}</span>
-                        <span className="block truncate text-[12px] text-mute">{item.hint}</span>
-                      </span>
-                    </>
+                    <span className="min-w-0 flex-1">
+                      <span className="block truncate text-sm font-medium text-ink">{item.label}</span>
+                      <span className="block truncate text-xs text-mute">{item.hint}</span>
+                    </span>
                   )}
-                  {cursor === index ? <CornerDownLeft className="h-3.5 w-3.5 shrink-0 text-faint" /> : null}
                 </button>
               </li>
             ))}
@@ -235,20 +227,13 @@ export function CommandPalette() {
         ) : (
           <div className="px-4 py-10 text-center">
             <p className="text-sm text-ink">No matches for “{query}”.</p>
-            <p className="mt-1 text-[13px] text-mute">Press Enter to search the full catalog.</p>
+            <p className="mt-1 text-[13px] text-mute">Press Enter to search Explore.</p>
           </div>
         )}
 
-        <div className="flex items-center justify-between gap-3 border-t border-stroke bg-page-soft/60 px-4 py-2.5 text-[11px] text-faint">
-          <span className="flex items-center gap-1.5">
-            <kbd className="rounded-[4px] border border-stroke bg-raised px-1.5 py-0.5">↑</kbd>
-            <kbd className="rounded-[4px] border border-stroke bg-raised px-1.5 py-0.5">↓</kbd>
-            to move
-          </span>
-          <span className="flex items-center gap-1.5">
-            <kbd className="rounded-[4px] border border-stroke bg-raised px-1.5 py-0.5">Enter</kbd>
-            to open
-          </span>
+        <div className="flex items-center justify-between gap-3 border-t border-stroke px-4 py-2.5 text-[11px] text-faint">
+          <span>↑ ↓ to move</span>
+          <span>Enter to open</span>
         </div>
       </div>
     </div>,

@@ -7,129 +7,33 @@
 @theme {
   --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
 
-  --color-page: #05070c;
-  --color-page-soft: #0a0f18;
-  --color-raised: #0e141f;
-  --color-panel: #141b29;
-  --color-stroke: #1e2736;
-  --color-stroke-strong: #314056;
-  --color-ink: #eef2f8;
-  --color-mute: #9aa6bb;
-  --color-faint: #6d7a90;
-  --color-accent: #4e8df0;
-  --color-accent-2: #7aabf6;
-  --color-accent-soft: #4e8df028;
-
-  --ease-out-soft: cubic-bezier(0.22, 0.68, 0.28, 1);
-  --ease-spring: cubic-bezier(0.34, 1.32, 0.64, 1);
-
-  --animate-fade: fade 260ms var(--ease-out-soft) both;
-  --animate-page: page 280ms var(--ease-out-soft) both;
-  --animate-pop: pop 240ms var(--ease-spring) both;
-  --animate-shimmer: shimmer 1.5s linear infinite;
-  --animate-sheen: sheen 900ms var(--ease-out-soft);
-  --animate-halo: halo 2.8s ease-in-out infinite;
-}
-
-@keyframes fade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/*
- * Opacity only. Animating transform here would leave the wrapper with a filled
- * identity matrix, which makes it a containing block and traps fixed-position
- * overlays (lightbox, command palette) inside the page bounds.
- */
-@keyframes page {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes pop {
-  from {
-    opacity: 0;
-    transform: scale(0.94);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes shimmer {
-  from {
-    background-position: -160% 0;
-  }
-  to {
-    background-position: 160% 0;
-  }
-}
-
-@keyframes sheen {
-  from {
-    transform: translateX(-120%) skewX(-14deg);
-  }
-  to {
-    transform: translateX(240%) skewX(-14deg);
-  }
-}
-
-@keyframes halo {
-  0%,
-  100% {
-    opacity: 0.55;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.14;
-    transform: scale(2.4);
-  }
+  --color-page: #12151c;
+  --color-page-soft: #181c25;
+  --color-raised: #1c212c;
+  --color-panel: #252b38;
+  --color-stroke: #343b4a;
+  --color-stroke-strong: #4a5366;
+  --color-ink: #f4f6fa;
+  --color-mute: #c5ccd8;
+  --color-faint: #9aa3b4;
+  --color-accent: #3d7de6;
+  --color-accent-2: #6ea0ef;
+  --color-accent-soft: #3d7de624;
 }
 
 @layer base {
   html {
     color-scheme: dark;
     background: var(--color-page);
-    scroll-behavior: smooth;
   }
 
   body {
     margin: 0;
     min-height: 100vh;
     font-family: var(--font-sans);
-    background-color: var(--color-page);
-    background-image:
-      radial-gradient(1100px 560px at 12% -12%, rgb(78 141 240 / 0.18), transparent 58%),
-      radial-gradient(820px 480px at 96% 4%, rgb(40 72 128 / 0.2), transparent 54%),
-      radial-gradient(640px 380px at 50% 120%, rgb(78 141 240 / 0.06), transparent 60%),
-      linear-gradient(180deg, #08101a 0%, var(--color-page) 38%);
+    background: var(--color-page);
     color: var(--color-ink);
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-  }
-
-  body::before {
-    content: "";
-    pointer-events: none;
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    opacity: 0.035;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-
-  #root {
-    position: relative;
-    z-index: 1;
   }
 
   * {
@@ -167,58 +71,12 @@
   }
 }
 
-/* No will-change: it would make every revealed block a containing block for
- * fixed-position descendants. */
-@utility reveal {
-  opacity: 0;
-  transform: translateY(var(--reveal-shift, 14px));
-  transition:
-    opacity 600ms var(--ease-out-soft) var(--reveal-delay, 0ms),
-    transform 600ms var(--ease-out-soft) var(--reveal-delay, 0ms);
-}
-
-@utility reveal-shown {
-  opacity: 1;
-  transform: none;
-}
-
-@utility skeleton {
-  background-color: var(--color-panel);
-  background-image: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgb(255 255 255 / 0.05) 45%,
-    rgb(255 255 255 / 0.08) 50%,
-    rgb(255 255 255 / 0.05) 55%,
-    transparent 100%
-  );
-  background-size: 220% 100%;
-  background-repeat: no-repeat;
-  animation: var(--animate-shimmer);
-}
-
-@utility hairline {
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.05),
-    inset 0 0 0 1px rgb(255 255 255 / 0.03);
-}
-
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-
-  .reveal {
-    opacity: 1 !important;
-    transform: none !important;
   }
 }

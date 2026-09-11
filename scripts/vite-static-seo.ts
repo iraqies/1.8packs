@@ -43,7 +43,7 @@ function routes(): Route[] {
     },
     {
       path: "/explore",
-      title: `Explore PvP packs | ${site.name}`,
+      title: `Explore packs | ${site.name}`,
       description: "Search 1.8.9 PvP resource packs by name, creator, resolution, or feature.",
     },
     ...packs.map((pack) => ({
@@ -56,13 +56,13 @@ function routes(): Route[] {
     })),
     {
       path: "/terms",
-      title: `Terms & Conditions | ${site.name}`,
-      description: "Working draft of the 1.8packs terms for browsing and downloading resource packs.",
+      title: `Terms | ${site.name}`,
+      description: "How 1.8packs works if you browse or download a pack.",
     },
     {
       path: "/privacy",
-      title: `Privacy Policy | ${site.name}`,
-      description: "Working draft of the 1.8packs privacy policy for the current public preview.",
+      title: `Privacy | ${site.name}`,
+      description: "What 1.8packs does and does not collect.",
     },
   ];
 }

@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/Button";
 import { site } from "@/config";
 import { downloadUrl, isRemoteDownload } from "@/lib/downloads";
 import type { Pack } from "@/types";
-import { Check, Download, X } from "lucide-react";
+import { Download, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
@@ -89,7 +89,7 @@ export function DownloadButton({ pack }: { pack: Pack }) {
   return (
     <>
       <Button className="w-full min-w-[220px]" onClick={prepare} disabled={phase === "preparing"}>
-        <Download className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-y-0.5" />
+        <Download className="h-4 w-4" />
         Download pack
       </Button>
 
@@ -102,56 +102,48 @@ export function DownloadButton({ pack }: { pack: Pack }) {
               aria-labelledby="download-gate-title"
               aria-describedby="download-gate-copy"
             >
-              <div className="absolute inset-0 animate-fade bg-page/80 backdrop-blur-sm" />
-              <div className="animate-pop relative w-full max-w-md overflow-hidden rounded-[14px] border border-stroke-strong bg-raised p-6 shadow-[0_30px_80px_rgb(0_0_0_/_0.6)]">
+              <div className="absolute inset-0 bg-page/90" />
+              <div className="relative w-full max-w-md overflow-hidden rounded-lg border border-stroke bg-raised p-6">
                 {phase === "ready" ? (
                   <button
                     type="button"
                     onClick={close}
                     aria-label="Close"
-                    className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-[8px] text-faint transition-colors hover:bg-page-soft hover:text-ink"
+                    className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-md text-faint hover:bg-page-soft hover:text-ink"
                   >
                     <X className="h-4 w-4" />
                   </button>
                 ) : null}
 
-                <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-faint">Download</p>
-                <h2 id="download-gate-title" className="mt-1 text-xl font-semibold tracking-tight">
-                  {phase === "ready" ? "Your pack is ready" : "Getting your pack ready…"}
+                <h2 id="download-gate-title" className="text-xl font-semibold tracking-tight">
+                  {phase === "ready" ? "File is ready" : "Hold on a second"}
                 </h2>
                 <p id="download-gate-copy" className="mt-2 text-sm leading-6 text-mute">
                   {phase === "ready"
-                    ? "If the file did not start, use the button below."
-                    : "Please wait a moment. The zip is being prepared."}
+                    ? "If nothing started, use the button below."
+                    : "The zip should start in a few seconds."}
                 </p>
 
-                <AdSlot name="download" label="A message from our sponsors" className="mt-5" />
+                <AdSlot name="download" label="Ad" className="mt-5" />
 
                 <div className="mt-5">
                   <div
-                    className="h-1 overflow-hidden rounded-full bg-panel"
+                    className="h-1 overflow-hidden rounded bg-panel"
                     role="progressbar"
                     aria-valuenow={percent}
                     aria-valuemin={0}
                     aria-valuemax={100}
                     aria-label="Download preparation"
                   >
-                    <div
-                      className="h-full rounded-full bg-gradient-to-r from-accent to-accent-2"
-                      style={{ width: `${percent}%` }}
-                    />
+                    <div className="h-full bg-accent" style={{ width: `${percent}%` }} />
                   </div>
-                  <p className="mt-2 text-[12px] tabular-nums text-faint" aria-live="polite">
+                  <p className="mt-2 text-xs tabular-nums text-faint" aria-live="polite">
                     {phase === "ready" ? "Done" : `${percent}%`}
                   </p>
                 </div>
 
                 {phase === "ready" ? (
-                  <Button
-                    className="mt-4 w-full"
-                    onClick={() => triggerDownload(downloadUrl(pack), pack.downloadName)}
-                  >
-                    <Check className="animate-pop h-4 w-4" />
+                  <Button className="mt-4 w-full" onClick={() => triggerDownload(downloadUrl(pack), pack.downloadName)}>
                     Download again
                   </Button>
                 ) : null}

@@ -19,8 +19,8 @@ export const githubRelease = githubReleaseFromCdn(cdnBase);
 
 export const site = {
   name: "1.8packs",
-  tagline: "Find your next PvP pack.",
-  description: "Find 1.8.9 Java Edition PvP resource packs, inspect previews, and download.",
+  tagline: "1.8.9 PvP resource packs",
+  description: "Minecraft 1.8.9 PvP resource packs with in-game screenshots and a zip download.",
   downloadPrepMs: 5000,
 } as const;
 
