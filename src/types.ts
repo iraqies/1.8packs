@@ -9,6 +9,7 @@ export const FEATURES = [
   "fps-friendly",
   "animated-textures",
   "blue",
+  "pink",
   "anime",
 ] as const;
 export type Feature = (typeof FEATURES)[number];

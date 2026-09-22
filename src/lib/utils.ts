@@ -39,6 +39,7 @@ export function labelFeature(feature: string) {
     "fps-friendly": "FPS friendly",
     "animated-textures": "Animated textures",
     blue: "Blue",
+    pink: "Pink",
     anime: "Anime",
   };
   return labels[feature] ?? feature;

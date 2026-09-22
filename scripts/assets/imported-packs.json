@@ -19,5 +19,25 @@
     "cover": "/previews/konata/thumb.webp?v=layout4",
     "hasGui": true,
     "zip": "/home/iraqies/iraqies/websites/1.8packs/public/downloads/Konata-Izumi-16x.zip"
+  },
+  {
+    "slug": "rosea",
+    "name": "Rosea",
+    "creator": "keno",
+    "description": "32x PvP pack by keno.",
+    "resolution": "32x",
+    "features": [
+      "custom-sky",
+      "animated-textures",
+      "short-swords",
+      "pink"
+    ],
+    "createdAt": "2026-09-22",
+    "updatedAt": "2026-09-22",
+    "downloadPath": "/downloads/Rosea-32x.zip",
+    "downloadName": "Rosea-32x.zip",
+    "cover": "/previews/rosea/thumb.webp?v=layout4",
+    "hasGui": true,
+    "zip": "/home/iraqies/iraqies/websites/1.8packs/public/downloads/Rosea-32x.zip"
   }
 ]

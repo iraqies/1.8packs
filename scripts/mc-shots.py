@@ -58,6 +58,7 @@ VERSION_MANIFEST = "https://launchermeta.mojang.com/mc/game/version_manifest.jso
 # Site zips are the same packs without section-sign filenames.
 PACK_ALIASES = {
     "konata": ROOT / "public/downloads/Konata-Izumi-16x.zip",
+    "rosea": ROOT / "public/downloads/Rosea-32x.zip",
 }
 
 # Java 8 is required: 1.8.9 ships LWJGL 2, which does not load on modern JVMs.

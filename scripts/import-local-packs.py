@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Copy packs we made from ~/.minecraft/resourcepacks onto the site.
+"""Copy listed packs from ~/.minecraft/resourcepacks onto the site.
 
 Generates a clean download zip, a cover thumb, and a menus preview for each
-pack, then rewrites src/data/packs.ts. Third-party packs are not imported.
+pack, then rewrites src/data/packs.ts.
 """
 
 from __future__ import annotations
@@ -28,7 +28,7 @@ VANILLA_INV = (176, 166)
 VANILLA_CHEST = (176, 222)
 VANILLA_ATLAS = 256
 
-# Only packs we made. Third-party PvP packs stay off the site.
+# Packs listed on the site. Source names are exact files under ~/.minecraft/resourcepacks.
 IMPORTS = [
     {
         "slug": "konata",
@@ -39,6 +39,20 @@ IMPORTS = [
         "download": "Konata-Izumi-16x.zip",
         "extra_features": ["anime", "blue"],
         "description": "Made by iraqies @18packs.pages.dev",
+        "createdAt": "2026-09-05",
+        "updatedAt": "2026-09-05",
+    },
+    {
+        "slug": "rosea",
+        "name": "Rosea",
+        "creator": "keno",
+        "resolution": "32x",
+        "source": '!     §crosea §8[§f32x§8].zip',
+        "download": "Rosea-32x.zip",
+        "extra_features": ["pink"],
+        "description": "32x PvP pack by keno.",
+        "createdAt": "2026-09-22",
+        "updatedAt": "2026-09-22",
     },
 ]
 
@@ -355,8 +369,8 @@ def import_one(spec: dict) -> dict:
         "description": spec["description"],
         "resolution": spec["resolution"],
         "features": features,
-        "createdAt": "2026-09-05",
-        "updatedAt": "2026-09-05",
+        "createdAt": spec.get("createdAt", "2026-09-05"),
+        "updatedAt": spec.get("updatedAt", "2026-09-05"),
         "downloadPath": f"/downloads/{spec['download']}",
         "downloadName": spec["download"],
         "cover": f"/previews/{spec['slug']}/thumb.webp?v=layout4",
