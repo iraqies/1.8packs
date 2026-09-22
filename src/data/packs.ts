@@ -48,6 +48,78 @@ export const packs: Pack[] = [
       { src: "/previews/rosea/sky.webp?v=close1", label: "Sky" },
       { src: "/previews/rosea/gui.webp?v=close1", label: "Menus" }
     ],
+  },
+  {
+    slug: "haimiya",
+    name: "Haimiya Mio",
+    creator: "R0L1",
+    description:
+      "1.8.9 PvP pack by R0L1.",
+    version: "1.8.9",
+    resolution: "16x",
+    features: ["custom-sky", "animated-textures", "short-swords", "anime"],
+    createdAt: "2026-09-22",
+    updatedAt: "2026-09-22",
+    downloadPath: "/downloads/Haimiya-Mio-16x.zip",
+    downloadName: "Haimiya-Mio-16x.zip",
+    cover: "/previews/haimiya/thumb.webp?v=layout4",
+    gallery: [
+      { src: "/previews/haimiya/swords.webp?v=close1", label: "Swords" },
+      { src: "/previews/haimiya/foods.webp?v=close1", label: "Foods" },
+      { src: "/previews/haimiya/tools.webp?v=close1", label: "Tools" },
+      { src: "/previews/haimiya/blocks.webp?v=close1", label: "Blocks" },
+      { src: "/previews/haimiya/nether.webp?v=close1", label: "Nether" },
+      { src: "/previews/haimiya/sky.webp?v=close1", label: "Sky" },
+      { src: "/previews/haimiya/gui.webp?v=close1", label: "Menus" }
+    ],
+  },
+  {
+    slug: "glaze",
+    name: "Glaze",
+    creator: "ansoni",
+    description:
+      "16x PvP pack by ansoni.",
+    version: "1.8.9",
+    resolution: "16x",
+    features: ["custom-sky", "animated-textures", "short-swords", "blue"],
+    createdAt: "2026-09-22",
+    updatedAt: "2026-09-22",
+    downloadPath: "/downloads/Glaze-16x.zip",
+    downloadName: "Glaze-16x.zip",
+    cover: "/previews/glaze/thumb.webp?v=layout4",
+    gallery: [
+      { src: "/previews/glaze/swords.webp?v=close1", label: "Swords" },
+      { src: "/previews/glaze/foods.webp?v=close1", label: "Foods" },
+      { src: "/previews/glaze/tools.webp?v=close1", label: "Tools" },
+      { src: "/previews/glaze/blocks.webp?v=close1", label: "Blocks" },
+      { src: "/previews/glaze/nether.webp?v=close1", label: "Nether" },
+      { src: "/previews/glaze/sky.webp?v=close1", label: "Sky" },
+      { src: "/previews/glaze/gui.webp?v=close1", label: "Menus" }
+    ],
+  },
+  {
+    slug: "purp",
+    name: "Purp",
+    creator: "Rh568",
+    description:
+      "16x PvP pack by Rh568.",
+    version: "1.8.9",
+    resolution: "16x",
+    features: ["custom-sky", "animated-textures", "short-swords"],
+    createdAt: "2026-09-22",
+    updatedAt: "2026-09-22",
+    downloadPath: "/downloads/Purp-16x.zip",
+    downloadName: "Purp-16x.zip",
+    cover: "/previews/purp/thumb.webp?v=layout4",
+    gallery: [
+      { src: "/previews/purp/swords.webp?v=close1", label: "Swords" },
+      { src: "/previews/purp/foods.webp?v=close1", label: "Foods" },
+      { src: "/previews/purp/tools.webp?v=close1", label: "Tools" },
+      { src: "/previews/purp/blocks.webp?v=close1", label: "Blocks" },
+      { src: "/previews/purp/nether.webp?v=close1", label: "Nether" },
+      { src: "/previews/purp/sky.webp?v=close1", label: "Sky" },
+      { src: "/previews/purp/gui.webp?v=close1", label: "Menus" }
+    ],
   }
 ];
 

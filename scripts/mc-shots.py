@@ -59,6 +59,9 @@ VERSION_MANIFEST = "https://launchermeta.mojang.com/mc/game/version_manifest.jso
 PACK_ALIASES = {
     "konata": ROOT / "public/downloads/Konata-Izumi-16x.zip",
     "rosea": ROOT / "public/downloads/Rosea-32x.zip",
+    "haimiya": ROOT / "public/downloads/Haimiya-Mio-16x.zip",
+    "glaze": ROOT / "public/downloads/Glaze-16x.zip",
+    "purp": ROOT / "public/downloads/Purp-16x.zip",
 }
 
 # Java 8 is required: 1.8.9 ships LWJGL 2, which does not load on modern JVMs.

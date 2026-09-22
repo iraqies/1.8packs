@@ -39,5 +39,64 @@
     "cover": "/previews/rosea/thumb.webp?v=layout4",
     "hasGui": true,
     "zip": "/home/iraqies/iraqies/websites/1.8packs/public/downloads/Rosea-32x.zip"
+  },
+  {
+    "slug": "haimiya",
+    "name": "Haimiya Mio",
+    "creator": "R0L1",
+    "description": "1.8.9 PvP pack by R0L1.",
+    "resolution": "16x",
+    "features": [
+      "custom-sky",
+      "animated-textures",
+      "short-swords",
+      "anime"
+    ],
+    "createdAt": "2026-09-22",
+    "updatedAt": "2026-09-22",
+    "downloadPath": "/downloads/Haimiya-Mio-16x.zip",
+    "downloadName": "Haimiya-Mio-16x.zip",
+    "cover": "/previews/haimiya/thumb.webp?v=layout4",
+    "hasGui": true,
+    "zip": "/home/iraqies/iraqies/websites/1.8packs/public/downloads/Haimiya-Mio-16x.zip"
+  },
+  {
+    "slug": "glaze",
+    "name": "Glaze",
+    "creator": "ansoni",
+    "description": "16x PvP pack by ansoni.",
+    "resolution": "16x",
+    "features": [
+      "custom-sky",
+      "animated-textures",
+      "short-swords",
+      "blue"
+    ],
+    "createdAt": "2026-09-22",
+    "updatedAt": "2026-09-22",
+    "downloadPath": "/downloads/Glaze-16x.zip",
+    "downloadName": "Glaze-16x.zip",
+    "cover": "/previews/glaze/thumb.webp?v=layout4",
+    "hasGui": true,
+    "zip": "/home/iraqies/iraqies/websites/1.8packs/public/downloads/Glaze-16x.zip"
+  },
+  {
+    "slug": "purp",
+    "name": "Purp",
+    "creator": "Rh568",
+    "description": "16x PvP pack by Rh568.",
+    "resolution": "16x",
+    "features": [
+      "custom-sky",
+      "animated-textures",
+      "short-swords"
+    ],
+    "createdAt": "2026-09-22",
+    "updatedAt": "2026-09-22",
+    "downloadPath": "/downloads/Purp-16x.zip",
+    "downloadName": "Purp-16x.zip",
+    "cover": "/previews/purp/thumb.webp?v=layout4",
+    "hasGui": true,
+    "zip": "/home/iraqies/iraqies/websites/1.8packs/public/downloads/Purp-16x.zip"
   }
 ]
